@@ -92,6 +92,10 @@ export default {
         width: calc(100% - 17px);
         position: relative;
 
+        @media (max-width: 700px) {
+            width: 100%
+        }
+
         &::after {
             content: '';
             display: block;
@@ -100,6 +104,10 @@ export default {
             bottom: 0;
             left: 0;
             border-bottom: 1px solid #eaeaea;
+
+            @media (max-width: 700px) {
+                width: 100%
+            }
         }
     }
 
@@ -136,8 +144,16 @@ export default {
 .is-mac .coins__head {
     width: calc(100% - 15px);
 
+    @media (max-width: 700px) {
+        width: 100%
+    }
+
     &::after {
         width: calc(100% + 15px);
+
+        @media (max-width: 700px) {
+            width: 100%
+        }
     }
 }
 </style>
