@@ -1,5 +1,6 @@
-<template class="coins">
-    <table class="coins__table"
+<template>
+    <table class="coins"
+           :class="{'is-mac': isMacOS}"
            v-if="assets && assets.length">
         <thead class="coins__head">
             <tr>
@@ -32,6 +33,10 @@ export default {
     computed: {
         coinList() {
             return this.assets.map(it => it.name.toLowerCase().replace(/ /g, '-')).join(',')
+        },
+        // тут не совсем уверен, тестить не на чем
+        isMacOS() {
+            return navigator.platform.indexOf('Mac') > -1
         }
     },
     async created() {
@@ -71,11 +76,9 @@ export default {
 <style lang="scss"
        scoped>
 .coins {
-    &__table {
-        width: 100%;
-        text-align: right;
-        border-collapse: collapse;
-    }
+    width: 100%;
+    text-align: right;
+    border-collapse: collapse;
 
     &__head,
     &__body tr {
@@ -127,6 +130,14 @@ export default {
                 display: none;
             }
         }
+    }
+}
+
+.is-mac .coins__head {
+    width: calc(100% - 15px);
+
+    &::after {
+        width: calc(100% + 15px);
     }
 }
 </style>
